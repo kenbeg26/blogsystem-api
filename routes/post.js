@@ -10,6 +10,8 @@ router.post("/", verify, postController.addPost);
 
 router.get("/all", verify, postController.getAllPosts);
 
+router.get("/:postId", verify, postController.getSpecificPosts);
+
 router.get("/", verify, postController.getUserPosts);
 
 router.patch("/update/:postId", verify, postController.updatePost);

@@ -61,6 +61,24 @@ module.exports.getUserPosts = (req, res) => {
 };
 
 
+
+// Retrieve a specific post by ID with populated author username
+module.exports.getSpecificPosts = (req, res) => {
+  const postId = req.params.postId;
+
+  Post.findById(postId)
+    .populate('author', 'username')
+    .then(post => {
+      if (!post) {
+        return res.status(404).json({ message: 'Post not found' });
+      }
+      res.status(200).json(post);
+    })
+    .catch(error => errorHandler(error, req, res));
+};
+
+
+
 // Update post
 module.exports.updatePost = async (req, res) => {
   try {
