@@ -36,15 +36,18 @@ module.exports.addPost = async (req, res) => {
   }
 };
 
-// Retrieve all post
+// Retrieve all posts with populated author username
 module.exports.getAllPosts = (req, res) => {
   Post.find({})
+    .populate('author', 'username') // This is the key part!
+    .sort({ createdAt: -1 }) // Optional: sort by latest
     .then(posts => {
-      console.log("Post found:", posts);
+      console.log("Posts found:", posts);
       res.status(200).json(posts);
     })
     .catch(error => errorHandler(error, req, res));
 };
+
 
 // Retrieve user post
 module.exports.getUserPosts = (req, res) => {
