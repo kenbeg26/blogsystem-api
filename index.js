@@ -22,7 +22,13 @@ const PORT = process.env.PORT || 4000;
 
 const corsOptions = {
   origin: [
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'https://blogapp-client-taupe.vercel.app',
+    'https://blogapp-client-john-kenneths-projects.vercel.app',
+    'https://blogapp-client-git-master-john-kenneths-projects.vercel.app',
+    'https://blogapp-client-k0yeotx0k-john-kenneths-projects.vercel.app'
+
+
 
   ],
   credentials: true,
