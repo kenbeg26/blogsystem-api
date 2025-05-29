@@ -10,4 +10,6 @@ router.post("/:postId", verify, commentController.addComment);
 
 router.get("/:postId", verify, commentController.getComment);
 
+router.delete("/delete/:commentId", verify, verifyAdmin, commentController.deleteComment);
+
 module.exports = router;
